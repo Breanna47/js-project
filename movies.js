@@ -4,24 +4,9 @@ let movies;
 async function main(filter) {
         const moviesWrapper = document.querySelector('.movies');
 
-        const searchInput = document.querySelector(".search__input");
-
-
-
-  renderMovies(movies);
-};
-
-async function renderMovies(movieList) {
-  const moviesWrapper = document.querySelector(".movies");
-
-  moviesWrapper.innerHTML = movieList.map(movie => `
-    <div class="container">
-      <div class="user-card__container">
-        <img class="movie__img" src="${movie.Poster}">
-        <h3>${movie.Title}</h3>
-      </div>
-    </div>
-  `).join("");
+const searchInput = document.getElementById('search__input');
+const searchButton = document.getElementsByClassName('input__button');
+const listItems = document.querySelectorAll('#itemList li');
 
 
 moviesWrapper.classList += ' movies__loading'  
@@ -30,9 +15,18 @@ moviesWrapper.classList += ' movies__loading'
   }
 
  moviesWrapper.classList.remove('movies__loading')  
-}
 
 
+ searchInput.addEventListener('input', (event) => {
+  const value = event.target.value.toLowerCase();
+
+    const filteredMovies = movies.filter(movie =>
+    movie.Title.toLowerCase().includes(value)
+  );
+
+  renderMovies(filteredMovies);
+});    
+    
 
 
 if (filter === "LOW_TO_HIGH") {
@@ -77,7 +71,7 @@ return `<div class="container">
 .join("");
 
  moviesWrapper.innerHTML = moviesHtml;
-
+}
 
 function filterMovies(event) {
     main(event.target.value);
