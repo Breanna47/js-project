@@ -3,18 +3,26 @@ let movies;
 
 async function main(filter) {
         const moviesWrapper = document.querySelector('.movies');
-const searchInput = document.querySelector(".search__input");
 
-searchInput.addEventListener("input", (event) => {
-  const value = event.target.value.toLowerCase();
+        const searchInput = document.querySelector(".search__input");
 
-  const filteredMovies = movies.filter(movie =>
-    movie.Title.toLowerCase().includes(value)
-  );
 
-  renderMovies(filteredMovies);
-});
 
+  renderMovies(movies);
+};
+
+function renderMovies(movieList) {
+  const moviesWrapper = document.querySelector(".movies");
+
+  moviesWrapper.innerHTML = movieList.map(movie => `
+    <div class="container">
+      <div class="user-card__container">
+        <img class="movie__img" src="${movie.Poster}">
+        <h3>${movie.Title}</h3>
+      </div>
+    </div>
+  `).join("");
+}
 
 moviesWrapper.classList += ' movies__loading'  
   if (!movies) {
@@ -69,7 +77,7 @@ return `<div class="container">
 .join("");
 
  moviesWrapper.innerHTML = moviesHtml;
-}
+
 
 function filterMovies(event) {
     main(event.target.value);
