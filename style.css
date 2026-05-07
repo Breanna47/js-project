@@ -73,17 +73,22 @@ nav {
     margin-left: 8px;
 }
 
-.input {
-    align-items: center; 
+#input {
+     align-items: center; 
     justify-content: center;
     text-align: center;
-    margin: 0 auto;
     width: 100%;
     display: flex;
-    
 }
 
-.search__input {
+.input__button {
+     margin: 16px;  
+     padding: 0px 16px;
+     border-color: black;
+     background-color:bisque;
+}
+
+#search__input {
     height: 40px;
     width: 500px;
     border-radius: 4px;

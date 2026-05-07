@@ -3,13 +3,26 @@ let movies;
 
 async function main(filter) {
         const moviesWrapper = document.querySelector('.movies');
+const searchInput = document.querySelector(".search__input");
 
-        moviesWrapper.classList += ' movies__loading'  
+searchInput.addEventListener("input", (event) => {
+  const value = event.target.value.toLowerCase();
+
+  const filteredMovies = movies.filter(movie =>
+    movie.Title.toLowerCase().includes(value)
+  );
+
+  renderMovies(filteredMovies);
+});
+
+
+moviesWrapper.classList += ' movies__loading'  
   if (!movies) {
     movies = await getMovies();
   }
 
  moviesWrapper.classList.remove('movies__loading')  
+
 
 
 
@@ -24,24 +37,17 @@ else if (filter === "YEAR") {
  movies.sort((a,b) => b.Year - a.Year);
 }
 else if (filter === "RATED") {
-const ratingOrder = { "PG": 1, "PG-13": 2, "R": 3 };
-const ratings = [
- { Title: "The King of Comedy", contentRating: "PG" },
- { Title: "A Midsummer Night's Sex Comedy", contentRating: "R" },
-{ Title: "The Bugs Bunny/Looney Tunes Comedy Hour", contentRating: "PG" },
-{ Title: "My Teen Romantic Comedy SNAFU", contentRating: "PG-13" },
-{ Title: "Fear City: A Family-Style Comedy", contentRating: "PG-13" },
-{ Title: "King of Comedy", contentRating: "PG-13" },
-{ Title: "The Broken Hearts Club: A Romantic Comedy", contentRating: "PG-13" },
-{ Title: "The Comedy of Terrors", contentRating: "R" },
-{ Title: "Louis C.K.: Live at the Comedy Store", contentRating: "R" },
-{ Title: "The Original Kings of Comedy", contentRating: "R" },
-];
-ratings.sort((a,b) => 
- ratingOrder[a.contentRating] - ratingOrder[b.contentRating];
-);
+const ratingOrder = {
+    "PG": 1,
+    "PG-13": 2,
+    "R": 3
+  };
 
+  movies.sort((a, b) => ratingOrder[a.Rated] - ratingOrder[b.Rated]);
 }
+
+
+
 
 
 
