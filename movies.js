@@ -11,7 +11,7 @@ async function main(filter) {
   renderMovies(movies);
 };
 
-function renderMovies(movieList) {
+async function renderMovies(movieList) {
   const moviesWrapper = document.querySelector(".movies");
 
   moviesWrapper.innerHTML = movieList.map(movie => `
@@ -22,7 +22,7 @@ function renderMovies(movieList) {
       </div>
     </div>
   `).join("");
-}
+
 
 moviesWrapper.classList += ' movies__loading'  
   if (!movies) {
@@ -30,7 +30,7 @@ moviesWrapper.classList += ' movies__loading'
   }
 
  moviesWrapper.classList.remove('movies__loading')  
-
+}
 
 
 
