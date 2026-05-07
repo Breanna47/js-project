@@ -1,75 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-<script src="https://kit.fontawesome.com/8b60ccf18e.js" crossorigin="anonymous">
-</script>
-<script src="movies.js" defer></script>
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "YOUR_PUBLIC_KEY",
-      });
-   })();
-</script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/8b60ccf18e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="movies.js" ></script>
+  
     <title>Javascript Project</title>
-</head>
-<nav>
-<div class="logo"><b>Movie Source</b></div>
-        
-       <ul class="list">
-        <li class="list__item">Documentary</li>
-        <li class="list__item">Horror</li>
-        <li class="list__item">Comedy</li>
+  </head>
+  <body>
+    <nav>
+      <div class="nav__container">
+        <div class="logo"><b>Movie Source</b></div>
+
+        <ul class="list">
+          <li class="list__item">Comedy</li>
         </ul>
+      </div>
     </nav>
-<section id="input"><div><button class="input__button"><h2>Search</h2> </button><input id="search__input" type="text"></input>
-</div>
-<ul id="itemList">
-  <li>The King of Comedy</li>
-  <li>A Midsummer Night's Sex Comedy</li>
-  <li>The Bugs Bunny/Looney Tunes Comedy Hour</li>
-  <li>My Teen Romantic Comedy SNAFU</li>
-  <li>Fear City: A Family-Style Comedy</li>
-  <li>King of Comedy</li>
-  <li>The Broken Hearts Club: A Romantic Comedy</li>
-  <li>The Comedy of Terrors</li>
-  <li>Louis C.K.: Live at the Comedy Store</li>
-  <li>he Original Kings of Comedy</li>
-</ul>
+    <section id="input">
+      <div>
+        <button class="input__button">
+          <h2>Search</h2>
+        </button>
+        <input id="search__input" type="text" />
+      </div>
+    </section>
+    <select id="filter" class="select" onchange="filterMovies(event)">
+      <option value="" disabled selected>Sort</option>
+      <option value="LOW_TO_HIGH">Price, Low to High</option>
+      <option value="HIGH_TO_LOW">Price, High to Low</option>
+      <option value="YEAR">Year</option>
+      <option value="RATED">Rated</option>
+    </select>
 
-</section>
-<select id="filter" onchange="filterMovies(event)">
-              <option value="" disabled selected>Sort</option>
-              <option value="LOW_TO_HIGH">Price, Low to High</option>
-              <option value="HIGH_TO_LOW">Price, High to Low</option>
-              <option value="YEAR">Year</option>
-              <option value="RATED">Rated</option>
-            
-            </select>
-<body>
+    <div class="movies movies__loading">
+      <i class="fas fa-spinner movies__loading--spinner"></i>
+    </div>
 
-<div class="movies movies__loading">
-  <i class="fas fa-spinner movies__loading--spinner"></i>
-</div>
-
-
-
-
-
-        </div>
-      
-
-
-
-    
-</body>
-<footer>
-
-</footer>
+    <footer id="footer">
+      <div class="footer__logo"><b>Movie Source</b></div>
+      <p class="copyright">Copyright © Breanna Watson</p>
+    </footer>
+  </body>
 </html>
