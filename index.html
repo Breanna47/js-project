@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+<script src="https://kit.fontawesome.com/8b60ccf18e.js" crossorigin="anonymous">
+</script>
+<script src="movies.js" defer></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "YOUR_PUBLIC_KEY",
+      });
+   })();
+</script>
+    <title>Javascript Project</title>
+</head>
+<nav>
+<div class="logo"><b>Movie Source</b></div>
+        
+       <ul class="list">
+        <li class="list__item">Documentary</li>
+        <li class="list__item">Horror</li>
+        <li class="list__item">Comedy</li>
+        </ul>
+    </nav>
+<section><div class="input"><h2>Search  &nbsp</h2><input class=" search__input" input type="text"> </div>
+</section>
+<select id="filter" onchange="filterMovies(event)">
+              <option value="" disabled selected>Sort</option>
+              <option value="LOW_TO_HIGH">Price, Low to High</option>
+              <option value="HIGH_TO_LOW">Price, High to Low</option>
+              <option value="YEAR">Year</option>
+              <option value="RATED">Rated</option>
+            
+            </select>
+<body>
+
+<div class="movies movies__loading">
+  <i class="fas fa-spinner movies__loading--spinner"></i>
+</div>
+
+
+
+
+
+        </div>
+      
+
+
+
+    
+</body>
+<footer>
+
+</footer>
+</html>
