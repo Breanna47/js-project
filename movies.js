@@ -6,6 +6,11 @@ async function main(filter) {
   const searchInput = document.getElementById("search__input");
   const searchButton = document.getElementsByClassName("input__button");
   const listItems = document.querySelectorAll("#itemList li");
+  const myInput = document.getElementById('myInput');
+
+
+
+
 
   moviesWrapper.classList += " movies__loading";
   if (!movies) {
@@ -14,8 +19,12 @@ async function main(filter) {
 
   moviesWrapper.classList.remove("movies__loading");
 
+  
+
+
   searchInput.addEventListener("input", (event) => {
     const value = event.target.value.toLowerCase();
+   
 
     const filteredMovies = movies.filter((movie) =>
       movie.Title.toLowerCase().includes(value),
@@ -26,7 +35,10 @@ async function main(filter) {
 
   searchInput.addEventListener("input", (event) => {
     const value = event.target.value.toLowerCase();
-  });
+     const query = searchInput.value;
+    console.log("Searching for:", query);
+});
+  
 
   if (filter === "LOW_TO_HIGH") {
     movies.sort((a, b) => a.Price - b.Price);
@@ -63,6 +75,18 @@ async function main(filter) {
 
   moviesWrapper.innerHTML = moviesHtml;
 }
+
+function inputValue(input) {}
+myInput.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    // Get the value from the input field
+    const inputValue = myInput.value;
+    console.log("Input received:", inputValue);
+    
+    // Optional: Prevent default form submission behavior
+    event.preventDefault();
+  }
+});
 
 function renderMovies(movies) {
   return (document.querySelector(".movies").innerHTML = movies
