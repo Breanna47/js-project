@@ -15,12 +15,15 @@ function handleInputKeyDown(event) {
 }
 
 function renderFilteredMovies(filter) {
-  const filteredMovies = document.querySelector(".movies");
-  if (event.target.value === "YEAR") {
-    const filteredMovies = movies.sort((a, b) => b.Year - a.Year);
+  if (!movies) return;
+
+  if (filter === "YEAR") {
+    movies.sort((a, b) => b.Year - a.Year);
   } else if (filter === "OLDYEAR") {
     movies.sort((a, b) => a.Year - b.Year);
   }
+
+  renderMovies(movies);
 }
 
 function renderMovies(movies) {
@@ -45,7 +48,6 @@ function filterMovies(event) {
   renderFilteredMovies(event.target.value);
 }
 
-renderFilteredMovies(filteredMovies);
 
 async function getMovies() {
   if (searchValue.length < 3) {
@@ -56,6 +58,6 @@ async function getMovies() {
     `https://www.omdbapi.com/?apikey=774d6e3b&s=${searchValue}`,
   );
   const data = await res.json();
-  const movies = data.Search;
+  movies = data.Search;
   renderMovies(movies);
 }
