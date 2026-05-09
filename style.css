@@ -139,6 +139,14 @@ body {
   margin: 0 auto;
   padding: 0;
 }
+
+p {
+  font-size: 14px;
+  word-break: break-word;
+}
+
+
+
 .user {
   width: 30%;
   margin: 0 auto;

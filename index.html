@@ -1,4 +1,5 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,8 +9,7 @@
       src="https://kit.fontawesome.com/8b60ccf18e.js"
       crossorigin="anonymous"
     ></script>
-    <script src="movies.js" ></script>
-  
+    <script src="movies.js" defer></script>
     <title>Javascript Project</title>
   </head>
   <body>
@@ -24,18 +24,19 @@
     </nav>
     <section id="input">
       <div>
-        <button class="input__button">
+        <button class="input__button" onclick="getMovies()">
           <h2>Search</h2>
         </button>
-        <input id="search__input" type="text" />
+        <input
+          id="search__input"
+          type="text"
+          onkeydown="handleInputKeyDown(event)"
+        />
       </div>
     </section>
     <select id="filter" class="select" onchange="filterMovies(event)">
       <option value="" disabled selected>Sort</option>
-      <option value="LOW_TO_HIGH">Price, Low to High</option>
-      <option value="HIGH_TO_LOW">Price, High to Low</option>
       <option value="YEAR">Year</option>
-      <option value="RATED">Rated</option>
     </select>
 
     <div class="movies movies__loading">
