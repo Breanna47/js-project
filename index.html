@@ -36,8 +36,12 @@
     </section>
     <select id="filter" class="select" onchange="filterMovies(event)">
       <option value="" disabled selected>Sort</option>
-      <option value="YEAR">Year</option>
+      <option value="YEAR">Newest to Oldest</option>
+            <option value="OLDYEAR">Oldest to Newest</option>
+
     </select>
+    <div id="movie-list"></div>
+
 
     <div class="movies movies__loading">
       <i class="fas fa-spinner movies__loading--spinner"></i>
