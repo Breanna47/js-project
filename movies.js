@@ -14,20 +14,13 @@ function handleInputKeyDown(event) {
   }
 }
 
-function renderMovies(filter) {
+function renderFilteredMovies(filter) {
   const filteredMovies = document.querySelector(".movies");
-
-  const movies = getMovies();
-
-  console.log(filter)
   if (event.target.value === "YEAR") {
-    console.log(filter)
-  const filteredMovies = movies.sort((a, b) => b.Year - a.Year);
-console.log(filteredMovies)
-}
-else if (filter === "OLDYEAR") {
+    const filteredMovies = movies.sort((a, b) => b.Year - a.Year);
+  } else if (filter === "OLDYEAR") {
     movies.sort((a, b) => a.Year - b.Year);
-}
+  }
 }
 
 function renderMovies(movies) {
@@ -48,23 +41,19 @@ function renderMovies(movies) {
     .join("");
 }
 
-
 function filterMovies(event) {
-    renderMovies(event.target.value)
-  } 
+  renderFilteredMovies(event.target.value);
+}
 
-  
-
-  renderMovies(filteredMovies);
-
+renderFilteredMovies(filteredMovies);
 
 async function getMovies() {
-  if(searchValue.length < 3) {
+  if (searchValue.length < 3) {
     alert("Please enter at least 3 characters to search for movies.");
     return;
   }
   const res = await fetch(
-    `https://www.omdbapi.com/?apikey=774d6e3b&s=${searchValue}`
+    `https://www.omdbapi.com/?apikey=774d6e3b&s=${searchValue}`,
   );
   const data = await res.json();
   const movies = data.Search;
