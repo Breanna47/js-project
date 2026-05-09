@@ -48,7 +48,6 @@ function filterMovies(event) {
   renderFilteredMovies(event.target.value);
 }
 
-
 async function getMovies() {
   if (searchValue.length < 3) {
     alert("Please enter at least 3 characters to search for movies.");
